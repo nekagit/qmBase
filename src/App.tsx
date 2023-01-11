@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Button from 'react-bootstrap/Button';
@@ -11,7 +11,6 @@ function App() {
   })
   const maxleng: number = 200
   const [qa, setQa] = useState([])
-  const [query, setQuery] = useState('')
 //   {
 //     "id": 1,
 //     "question": "Question 1",
@@ -21,27 +20,26 @@ function App() {
 //         "Tag2"
 //     ]
 // },
-  const handleChange = (e: { target: { value: string; }; }) => {
+
+  const handleChange = useCallback( (e: { target: { value: string; }; }) => {
     const results = qa.filter((element: any) => {
       if (e.target.value === "") return qa
       if (element.question.toLowerCase().includes(e.target.value.toLowerCase())) {
-        return element.element.toLowerCase().includes(e.target.value.toLowerCase())
+        return true
       }
       else if (element.answer.toLowerCase().includes(e.target.value.toLowerCase())) {
-        return element.answer.toLowerCase().includes(e.target.value.toLowerCase())
+        return true
       }
-      else if (element.id === e.target.value) {
-        return e.target.value
-      }
+
       else {
-        return []
+        return false
       }
     })
     setState({
       query: e.target.value,
       list: results
     })
-  }
+  },[qa, setState])
   useEffect(() => {
     fetch("https://qmbasefunctions.azurewebsites.net/api/questions?code=Y5DGbEq3YHjpTKgrwq9czVdm7ZxR8zy26Z_yNh8q4DFKAzFudvB65w==")
       .then(response => response.json())
@@ -64,7 +62,7 @@ function App() {
           <input onChange={handleChange} value={state.query} type="search" />
         </form>
         <ul>
-          {(state.query === '' ? "" : qa.map((qq: any) => {
+          {(state.query === '' ? "" : state.list.map((qq: any) => {
             return <li key={qq.id.toString()}> {qq.answer}</li>
           }))}
         </ul>
