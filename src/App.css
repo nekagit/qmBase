@@ -46,3 +46,18 @@ li {
   -ms-overflow-style: none; 
   scrollbar-width: none;
 }
+
+.Input {
+  width: 20vh;
+  height: 3vh;
+  font-size: small;
+  margin: 1vh;
+}
+
+button {
+  font-size: small!important;
+  margin: auto!important;
+  padding: 0.65vh!important;
+  width: fit-content;
+
+}
