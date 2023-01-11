@@ -30,5 +30,17 @@ li {
 }
 
 .qaAnswers {
-  background-color: blue;
+  width: 33vh;
+  height: 20vh;
+  overflow: none;
+  overflow-wrap: break-word
+}
+
+.qaAnswers::-webkit-scrollbar {
+  display: none;
+}
+
+.qaAnswers {
+  -ms-overflow-style: none; 
+  scrollbar-width: none;
 }
