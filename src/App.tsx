@@ -14,6 +14,11 @@ function App() {
     list: []
   }) // State of Searching
 
+  const [stateAdding, setStateAdding] = useState({
+    question: '',
+    answer: "",
+  }) // State of Searching
+
   // Fetching all answers
   useEffect(() => {
     fetch("https://qmbasefunctions.azurewebsites.net/api/questions?code=Y5DGbEq3YHjpTKgrwq9czVdm7ZxR8zy26Z_yNh8q4DFKAzFudvB65w==")
@@ -44,8 +49,7 @@ function App() {
     })
   }, [qa, setState])
 
-  
-// TSX of the answers
+  // TSX of the answers
   const listItems = qa.map((qa: any) =>
     <><li key={qa.id.toString()}><span className="qaQuestions">{qa.question}</span><br /><textarea
       value={qa.answer}
@@ -58,11 +62,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
+      <header className="App-header pt-3">
         <h1>Frequent questions</h1>
-        <h4>simple answers to your most common questions</h4>
-        <form>
-          <input onChange={handleChange} value={state.query} type="search" />
+        <h6>simple answers to your most common questions</h6>
+        <hr />
+        <form className='d-flex flex-column'>
+          <input className='Input' onChange={handleChange} value={state.query} type="search" placeholder='Search for Question/Answer' />
+        <hr />
+          <input className='Input' value={stateAdding.question} type="search"  placeholder='Input Question' />
+          <input className='Input' value={stateAdding.answer} type="search"  placeholder='Input Answer' />
+          <button className='btn btn-info mt-2'>Submit</button>
         </form>
         <ul>
           {(state.query === '' ? "" : state.list.map((qq: any) => {
