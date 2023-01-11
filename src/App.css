@@ -1,0 +1,34 @@
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+.personalGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  font-size: small;
+  padding: 3vh;
+  margin: 3vh 0 3vh 0
+}
+
+li {
+  list-style-type: none;
+  padding: 3vh;
+}
+
+.qaQuestions {
+  padding: 3vh;
+  font-size: large;
+
+}
+
+.qaAnswers {
+  background-color: blue;
+}
