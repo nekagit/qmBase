@@ -1,12 +1,12 @@
 .App-header {
-  background-color: #282c34;
+  color: rgb(41,56,95);
+  background-color: rgb(240,243,244);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 
@@ -24,12 +24,14 @@ li {
 }
 
 .qaQuestions {
+  color: rgb(41,56,95);
   padding: 3vh;
   font-size: large;
 
 }
 
 .qaAnswers {
+  color: rgb(67,105,132);
   width: 33vh;
   height: 20vh;
   overflow: none;
